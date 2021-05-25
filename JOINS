@@ -1,0 +1,45 @@
+Below you can find the JOIN queries I did for this SQL project
+
+1) 
+SELECT C.city,
+	COUNT(A.customer_id) AS count_of_customers
+FROM customer A
+INNER JOIN address B ON A.address_id = B.address_id
+INNER JOIN city C ON B.city_id = C.city_id
+INNER JOIN country D ON C.country_id = D.country_id
+WHERE country IN ('India', 'China', 'United States', 'Japan', 'Mexico', 'Brazil', 'Russian Federation', 'Phillipines', 'Turkey', 'Indonesia')
+GROUP BY city
+ORDER BY COUNT(customer_id) DESC
+LIMIT 10
+
+2)
+SELECT SUM(A.amount) AS total_amount_paid,
+	B.customer_id,
+	B.first_name,
+	B.last_name,
+	D.city,
+	E.country
+FROM payment A
+INNER JOIN customer B ON A.customer_id = B.customer_id
+INNER JOIN address C ON B.address_id = C.address_id
+INNER JOIN city D ON C.city_id = D.city_id
+INNER JOIN country E ON D.country_id = E.country_id
+WHERE city IN (
+	'Aurora',
+	'Shimoga',
+	'Aparecida de Goinia',
+	'Emeishan',
+	'Pontianak',
+	'Tarsus',
+	'Atlixco',
+	'Zalantun',
+	'Rio Claro',
+	'Tokat')
+GROUP BY
+	B.customer_id,
+	B.first_name,
+	B.last_name,
+	D.city,
+	E.country
+ORDER BY SUM(A.amount) DESC
+LIMIT 5
