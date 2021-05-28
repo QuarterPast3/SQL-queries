@@ -1,0 +1,23 @@
+This is a command to add new values into the category_id column
+
+INSERT INTO category(category_id, name)
+VALUES (’Thriller’),
+('Crime'),
+('Mystery'),
+('Mystery'),
+('Romance'),
+('War');
+
+
+Below you can find code to Update a value in the category column
+
+UPDATE film_category
+SET category_id = 17
+WHERE film_id = 5;
+
+
+
+This line of code deletes a value in the category_id column
+
+DELETE FROM category
+WHERE name = ‘Mystery’;
