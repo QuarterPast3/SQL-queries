@@ -1,0 +1,52 @@
+## Finding duplicate data query
+SELECT film_id,
+	title,
+	description,
+	release_year,
+	language_id,
+	rental_duration,
+	rental_rate,
+	replacement_cost,
+	rating,
+	last_update,
+	special_features,
+	fulltext,
+	film_imdb,
+	COUNT(*)
+FROM film
+GROUP BY film_id,
+	title,
+	description,
+	release_year,
+	language_id,
+	rental_duration,
+	rental_rate,
+	replacement_cost,
+	rating,
+	last_update,
+	special_features,
+	fulltext,
+	film_imdb
+HAVING COUNT(*) > 1
+
+## Finding missing data
+SELECT film_id,
+	title,
+	description,
+	release_year,
+	language_id,
+	rental_duration,
+	rental_rate,
+	replacement_cost,
+	rating,
+	last_update,
+	special_features,
+	fulltext,
+	film_imdb
+FROM film
+WHERE [insert_column] IS NULL
+
+## Non-uniform data
+SELECT col1
+FROM tablename
+GROUP BY col1
