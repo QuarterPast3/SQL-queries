@@ -1,0 +1,29 @@
+## Fetch films that length is larger than 120 min and rental rate is larger than 2.99
+SELECT film_id,
+	title,
+	description
+FROM film
+WHERE length > 120 AND rental_rate > 2.99
+
+## Select filns that have a rental duration between 3 and 7 days
+SELECT film_id,
+	title,
+	description
+FROM film
+WHERE rental_duration BETWEEN 3 AND 7
+
+## Select films that are PG or G
+SELECT film_id,
+	title,
+	description
+FROM filmW
+HERE rating ='PG' OR rating = 'G'
+
+Select films and average rental rate with a rating of G or PG
+SELECT film_id,
+	title,
+	AVG(rental_rate) AS average_movie_rental_rate
+FROM film
+GROUP BY (film_id)
+HAVING rating = 'G' OR rating = 'PG'
+ORDER BY film_id ASC
