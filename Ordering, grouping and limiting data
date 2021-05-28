@@ -1,0 +1,10 @@
+## Order by title alphabetically
+SELECT title
+FROM film
+ORDER BY title ASC
+
+##  Get average rental rate and group by rating
+) SELECT rating,
+	   AVG(rental_rate) AS average_rental_rate
+FROM film
+GROUP BY rating
